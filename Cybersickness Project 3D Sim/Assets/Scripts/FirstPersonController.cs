@@ -17,6 +17,7 @@ public class FirstPersonController : MonoBehaviour
     private Vector3 originalCameraPosition; // Original local position of the camera
     private float blinkTimer = 0f; // Timer for controlling blink intervals
     private bool isBlinking = false; // Flag to check if the screen is currently blinking
+    private bool headBobEnabled = true; // Toggle for head bobbing
 
     void Start()
     {
@@ -35,6 +36,12 @@ public class FirstPersonController : MonoBehaviour
 
     void Update()
     {
+        // Toggle head bobbing with H key
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            headBobEnabled = !headBobEnabled;
+        }
+
         // Handle blinking
         BlinkEffect();
 
@@ -56,14 +63,14 @@ public class FirstPersonController : MonoBehaviour
         // Move the player object
         transform.Translate(direction * speed * Time.deltaTime, Space.World);
 
-        // Apply head bob effect if moving
-        if (direction.magnitude > 0.1f)
+        // Apply head bob effect if moving and head bobbing is enabled
+        if (direction.magnitude > 0.1f && headBobEnabled)
         {
             HeadBob();
         }
         else
         {
-            // Reset to original camera position if not moving
+            // Reset to original camera position if not moving or head bobbing is disabled
             cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, originalCameraPosition, Time.deltaTime * 5f);
             headBobTimer = 0f;
         }
