@@ -9227,6 +9227,8 @@ GameObject:
   - component: {fileID: 1643223887}
   - component: {fileID: 1643223886}
   - component: {fileID: 1643223890}
+  - component: {fileID: 1643223892}
+  - component: {fileID: 1643223891}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -9343,6 +9345,42 @@ MonoBehaviour:
   blinkOverlay: {fileID: 1278045018}
   blinkDuration: 0.2
   blinkInterval: 5
+--- !u!114 &1643223891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643223884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4ec47638ee95f4292d715721c53ded, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensityAdjustmentRate: 1
+  minIntensity: 0
+  maxIntensity: 1
+  currentFoveationIntensity: 0.5
+  intensityDisplayText: {fileID: 0}
+--- !u!114 &1643223892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643223884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13be76684e82d40428c461b5abf518bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetCamera: {fileID: 0}
+  fovDisplayText: {fileID: 0}
+  fovAdjustmentRate: 1
+  thresholdHigh: 7
+  thresholdLow: 3
+  minFOV: 30
+  maxFOV: 120
 --- !u!1 &1651825685
 GameObject:
   m_ObjectHideFlags: 0
