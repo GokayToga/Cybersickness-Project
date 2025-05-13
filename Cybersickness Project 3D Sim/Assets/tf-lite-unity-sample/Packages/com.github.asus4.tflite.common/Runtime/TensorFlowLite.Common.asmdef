@@ -1,0 +1,30 @@
+{
+    "name": "TensorFlowLite.Common",
+    "rootNamespace": "",
+    "references": [
+          "TensorFlowLite.Core",
+          "Unity.Collections",
+          "Unity.Jobs",
+          "Unity.Mathematics"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": ["UNITY_BURST"],
+    "versionDefines": [
+        {
+            "name": "com.unity.render-pipelines.universal",
+            "expression": "10.0.0",
+            "define": "MODULE_URP_ENABLED"
+        },
+        {
+            "name": "com.cysharp.unitask",
+            "expression": "",
+            "define": "TFLITE_UNITASK_ENABLED"
+        }
+    ],
+    "noEngineReferences": false
+}
