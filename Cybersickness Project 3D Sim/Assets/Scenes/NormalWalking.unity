@@ -13293,6 +13293,101 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1312509052}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1317621619
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1317621623}
+  - component: {fileID: 1317621622}
+  - component: {fileID: 1317621621}
+  - component: {fileID: 1317621620}
+  - component: {fileID: 1317621624}
+  m_Layer: 0
+  m_Name: CybersicknessManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1317621620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317621619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e2f2d6873b7f48b66fc52377a1ee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modelRunner: {fileID: 1317621622}
+  eyeBuffer: {fileID: 0}
+  ppVolume: {fileID: 0}
+  minFov: 0
+  maxFov: 3
+  minAperture: 1
+  maxAperture: 16
+--- !u!114 &1317621621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317621619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 603ac83053443e64084519b757e1b8b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  T: 76
+  D: 5
+  means: []
+  stds: []
+--- !u!114 &1317621622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317621619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc5f804ee4b939545819228476d096a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modelAsset: {fileID: 4900000, guid: e7ed465e0e82de2479a186e60b0298d1, type: 3}
+--- !u!4 &1317621623
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317621619}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1317621624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317621619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dda3e95c1944e0f4a965412ea7113863, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1326092973
 GameObject:
   m_ObjectHideFlags: 0
@@ -16782,7 +16877,6 @@ GameObject:
   - component: {fileID: 1643223891}
   - component: {fileID: 1643223893}
   - component: {fileID: 1643223892}
-  - component: {fileID: 1643223895}
   - component: {fileID: 1643223894}
   m_Layer: 0
   m_Name: Player
@@ -17003,26 +17097,11 @@ MonoBehaviour:
   modelRunner: {fileID: 0}
   eyeBuffer: {fileID: 0}
   ppVolume: {fileID: 0}
+  dof: {fileID: 0}
   minFov: 0
   maxFov: 3
   minAperture: 1
   maxAperture: 16
---- !u!114 &1643223895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1643223884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 603ac83053443e64084519b757e1b8b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  T: 76
-  D: 5
-  means: []
-  stds: []
 --- !u!1 &1651665956
 GameObject:
   m_ObjectHideFlags: 0
@@ -21948,3 +22027,4 @@ SceneRoots:
   - {fileID: 1653728260}
   - {fileID: 589591489}
   - {fileID: 1466853056}
+  - {fileID: 1317621623}

@@ -7,6 +7,7 @@ using TensorFlowLite;
 
 public class TFLiteModelRunner : MonoBehaviour
 {
+    //[Tooltip("")]
     public TextAsset modelAsset;      // drag the .tflite here
     Interpreter interpreter;
     int T = 76, D = 5;

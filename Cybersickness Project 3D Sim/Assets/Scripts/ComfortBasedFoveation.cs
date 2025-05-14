@@ -19,8 +19,23 @@ public class ComfortBasedFoveation : MonoBehaviour
 
     void Start()
     {
-        if (ppVolume != null)
-            ppVolume.profile.TryGetSettings(out dof);
+        var displays = new List<XRDisplaySubsystem>();
+        SubsystemManager.GetSubsystems(displays);
+
+        // Pick the first one that is running
+        foreach (var d in displays)
+        {
+            if (d.running)
+            {
+                xrDisplay = d;
+                Debug.Log("Using XR Display: " + d.SubsystemDescriptor.id);
+                break;
+            }
+        }
+
+        if (xrDisplay == null)
+            Debug.LogError("No running XRDisplaySubsystem found");
+
     }
 
     void Update()
