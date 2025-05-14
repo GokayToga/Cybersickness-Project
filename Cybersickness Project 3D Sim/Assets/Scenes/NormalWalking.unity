@@ -13326,12 +13326,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modelRunner: {fileID: 1317621622}
-  eyeBuffer: {fileID: 0}
+  eyeBuffer: {fileID: 1317621621}
   ppVolume: {fileID: 0}
   minFov: 0
   maxFov: 3
   minAperture: 1
   maxAperture: 16
+  foveEnabled: 0
 --- !u!114 &1317621621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13345,9 +13346,95 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   T: 76
-  D: 5
-  means: []
-  stds: []
+  D: 43
+  means:
+  - -0.96
+  - 133.38332
+  - -1.18
+  - 78269.59
+  - 1.9471464e+10
+  - -7.7801175
+  - 1.1151764
+  - -27.347137
+  - -0.23172584
+  - -0.30511755
+  - 0.5084211
+  - 0.764057
+  - 34.28287
+  - -1.220225
+  - -32.32957
+  - -0.021387063
+  - -0.05794758
+  - 0.73206747
+  - 0.426706
+  - 0.4988462
+  - 2.7633405
+  - 0.7288875
+  - 0.7528941
+  - -31.510607
+  - -0.35626382
+  - -34.745533
+  - 0.017738711
+  - -0.0684892
+  - 0.7379846
+  - 0.39861304
+  - 0.49968612
+  - 2.6029005
+  - 0.8942618
+  - 0.75720894
+  - -0.49259093
+  - 136.1931
+  - -0.39161846
+  - -0.4368538
+  - 136.151
+  - -0.38920864
+  - -0.42111763
+  - 135.75433
+  - -0.4081397
+  stds:
+  - 1
+  - 88.20518
+  - 1
+  - 33082.45
+  - 2.3321516e+10
+  - 10.504402
+  - 4.3955984
+  - 13.42308
+  - 0.3847428
+  - 0.34811294
+  - 0.7298796
+  - 0.36976445
+  - 4.4196362
+  - 7.158163
+  - 6.002545
+  - 0.09972343
+  - 0.11221181
+  - 0.35810474
+  - 0.21133292
+  - 0.23405984
+  - 1.8895692
+  - 0.33853012
+  - 0.36805785
+  - 1.749657
+  - 6.438064
+  - 6.544289
+  - 0.09392391
+  - 0.10568621
+  - 0.35982564
+  - 0.16796474
+  - 0.17749773
+  - 1.8317814
+  - 0.15899129
+  - 0.36928967
+  - 1.8238207
+  - 88.34648
+  - 2.1438687
+  - 1.8379283
+  - 88.371735
+  - 2.1559095
+  - 2.0249264
+  - 88.23423
+  - 2.278671
 --- !u!114 &1317621622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13360,7 +13447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc5f804ee4b939545819228476d096a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modelAsset: {fileID: 4900000, guid: e7ed465e0e82de2479a186e60b0298d1, type: 3}
+  modelAsset: {fileID: 4900000, guid: c1c0799347a3c9f4e9b25281a559ce03, type: 3}
 --- !u!4 &1317621623
 Transform:
   m_ObjectHideFlags: 0
@@ -16875,9 +16962,6 @@ GameObject:
   - component: {fileID: 1643223885}
   - component: {fileID: 1643223890}
   - component: {fileID: 1643223891}
-  - component: {fileID: 1643223893}
-  - component: {fileID: 1643223892}
-  - component: {fileID: 1643223894}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -17046,62 +17130,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.1337891, y: 2, z: 0.8762207}
   m_Center: {x: -0.002319336, y: 0, z: -0.06188965}
---- !u!114 &1643223892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1643223884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a4ec47638ee95f4292d715721c53ded, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  intensityAdjustmentRate: 1
-  minIntensity: 0
-  maxIntensity: 1
-  currentFoveationIntensity: 0.5
-  intensityDisplayText: {fileID: 0}
---- !u!114 &1643223893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1643223884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13be76684e82d40428c461b5abf518bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetCamera: {fileID: 0}
-  fovDisplayText: {fileID: 0}
-  fovAdjustmentRate: 1
-  thresholdHigh: 7
-  thresholdLow: 3
-  minFOV: 30
-  maxFOV: 120
---- !u!114 &1643223894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1643223884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e083dd2ef07efc48b5065bdfc517d6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modelRunner: {fileID: 0}
-  eyeBuffer: {fileID: 0}
-  ppVolume: {fileID: 0}
-  dof: {fileID: 0}
-  minFov: 0
-  maxFov: 3
-  minAperture: 1
-  maxAperture: 16
 --- !u!1 &1651665956
 GameObject:
   m_ObjectHideFlags: 0

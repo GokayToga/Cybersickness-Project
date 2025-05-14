@@ -24,8 +24,10 @@ public class test : MonoBehaviour
 
     void Update()
     {
+        int D = eyeBuffer.D;     // read from the buffer
+
         // 3) Build a dummy sample array of length D
-        float[] fakeSample = new float[D];
+        float[] fakeSample = new float[D]; ;
 
         // Fill it with something oscillating just on element 0
         fakeSample[0] = Mathf.Sin(Time.time);
