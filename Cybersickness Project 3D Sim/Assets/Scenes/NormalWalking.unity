@@ -13306,6 +13306,7 @@ GameObject:
   - component: {fileID: 1317621621}
   - component: {fileID: 1317621620}
   - component: {fileID: 1317621624}
+  - component: {fileID: 1317621625}
   m_Layer: 0
   m_Name: CybersicknessManager
   m_TagString: Untagged
@@ -13325,7 +13326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688e2f2d6873b7f48b66fc52377a1ee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modelRunner: {fileID: 1317621622}
+  modelRunner: {fileID: 1317621625}
   eyeBuffer: {fileID: 1317621621}
   ppVolume: {fileID: 0}
   minFov: 0
@@ -13442,7 +13443,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317621619}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc5f804ee4b939545819228476d096a5, type: 3}
   m_Name: 
@@ -13475,6 +13476,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dda3e95c1944e0f4a965412ea7113863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1317621625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317621619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 812513e5f90480040a0432e86529a250, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modelAsset: {fileID: 0}
+  T: 76
+  D: 43
 --- !u!1 &1326092973
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ using UnityEngine.Rendering.PostProcessing;  // if using Post-Processing v2
 
 public class ComfortBasedFoveation : MonoBehaviour
 {
-    public TFLiteModelRunner modelRunner;
+    public ONNXModelRunner modelRunner;
     public EyeDataBuffer eyeBuffer;
     public XRDisplaySubsystem xrDisplay;  // assign via inspector or find at runtime
     public PostProcessVolume ppVolume;    // for Depth of Field
