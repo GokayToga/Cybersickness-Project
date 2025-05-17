@@ -5,7 +5,8 @@ using UnityEngine;
 public class EyeDataBuffer : MonoBehaviour
 {
     public int T = 76;            // window length
-    public int D = 43;             // feature dimension
+    public int D = 43;
+    //public int D => this.D;// feature dimension
     public float[] means;         // set these in Inspector
     public float[] stds;          // set these in Inspector
 
