@@ -11,10 +11,12 @@ from typing import List
 app = FastAPI()
 
 # Build the absolute path to the SavedModel directory:
-MODEL_DIR  =("C:\Users\Administrator\Desktop\Cybersickness-Project\VRCM_Final_model")
+MODEL_DIR = "C:/Users/Administrator/Desktop/Cybersickness-Project/VRCM_Final_model"
+
+
 
 # 1. Load the SavedModel signature
-model = tf.saved_model.load("C:\Users\Administrator\Desktop\Cybersickness-Project\VRCM_Final_model")
+model = tf.saved_model.load(MODEL_DIR)
 infer = model.signatures["serving_default"]
 
 # 2. Define request/response schemas
@@ -27,6 +29,11 @@ class PredictResponse(BaseModel):
 
 class WindowRequest(BaseModel):
     window: List[List[float]]
+
+# --- GET handler for diagnostics ---
+@app.get("/predict")
+def predict_get():
+    return {"detail": "This endpoint expects a POST with JSON body {\"window\": [[...],…]}."}
 
 class ComfortResponse(BaseModel):
     comfort: float
@@ -41,7 +48,8 @@ def predict(req: WindowRequest):
     inp = tf.constant(arr)                                  # tf.Tensor
     out = infer(input_sequence=inp)          # dict of output tensors :contentReference[oaicite:5]{index=5}
     # 3) extract your comfort value
-    comfort = float(out[next(iter(out))].numpy()[0, -1, 0])
+    key = next(iter(out))
+    comfort = float(out[key].numpy()[0, -1, 0])
     return ComfortResponse(comfort=comfort)
 #uvicorn server:app --host 0.0.0.0 --port 5000
 #C:\Users\Administrator\Desktop\Cybersickness-Project
