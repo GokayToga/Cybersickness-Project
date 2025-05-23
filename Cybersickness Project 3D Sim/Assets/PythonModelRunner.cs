@@ -46,7 +46,7 @@ public class PythonModelRunner : MonoBehaviour
 
 
         // 5) parse response {"comfort": ...}
-        var res = JsonUtility.FromJson<ComfortResponse>(uw.downloadHandler.text);
+        var res = JsonConvert.DeserializeObject<ComfortResponse>(uw.downloadHandler.text);
         callback?.Invoke(res.comfort);
     }
 

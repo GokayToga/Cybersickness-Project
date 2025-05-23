@@ -67,7 +67,9 @@ public class ComfortBasedFoveation : MonoBehaviour
         if (xrDisplay != null)
         {
             // real headset path
-            xrDisplay.foveatedRenderingLevel = fovLevel;
+            float current = xrDisplay.foveatedRenderingLevel;
+            xrDisplay.foveatedRenderingLevel = Mathf.Lerp(current, fovLevel, Time.deltaTime * 5f);
+            //xrDisplay.foveatedRenderingLevel = fovLevel;
             xrDisplay.foveatedRenderingFlags = XRDisplaySubsystem.FoveatedRenderingFlags.GazeAllowed;
         }
         else

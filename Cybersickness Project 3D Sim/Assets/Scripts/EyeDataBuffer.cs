@@ -79,6 +79,8 @@ Queue<float[]> buffer;
         foreach (var sample in buffer)
             for (int d = 0; d < D; d++)
                 arr[t, d] = sample[d];
+        t++;
         return arr;
     }
+
 }
