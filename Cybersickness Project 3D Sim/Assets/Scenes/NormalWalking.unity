@@ -13310,6 +13310,7 @@ GameObject:
   - component: {fileID: 1317621628}
   - component: {fileID: 1317621627}
   - component: {fileID: 1317621626}
+  - component: {fileID: 1317621629}
   m_Layer: 0
   m_Name: CybersicknessManager
   m_TagString: Untagged
@@ -13329,13 +13330,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688e2f2d6873b7f48b66fc52377a1ee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modelRunner: {fileID: 1317621627}
-  eyeBuffer: {fileID: 1317621621}
-  minFov: 0
-  maxFov: 3
-  ppVolume: {fileID: 0}
-  minAperture: 1
-  maxAperture: 16
+  minLevel: 0
+  maxLevel: 1
 --- !u!114 &1317621621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13500,7 +13496,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317621619}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 355b33585c7e7794b80b383d56a7b84f, type: 3}
   m_Name: 
@@ -13532,6 +13528,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eyeBuffer: {fileID: 0}
   serverUrl: http://127.0.0.1:5000/predict
+--- !u!114 &1317621629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317621619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1e3aa065ed0cc149b97c78e651e8812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1326092973
 GameObject:
   m_ObjectHideFlags: 0
@@ -17161,7 +17169,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0

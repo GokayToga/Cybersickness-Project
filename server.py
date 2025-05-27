@@ -53,3 +53,4 @@ def predict(req: WindowRequest):
     return ComfortResponse(comfort=comfort)
 #uvicorn server:app --host 0.0.0.0 --port 5000
 #C:\Users\Administrator\Desktop\Cybersickness-Project
+#venv\Scripts\Activate.ps1

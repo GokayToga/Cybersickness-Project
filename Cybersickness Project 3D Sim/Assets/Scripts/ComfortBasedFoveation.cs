@@ -2,81 +2,64 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
-using UnityEngine.Rendering.PostProcessing;  // if using Post-Processing v2
 
+[RequireComponent(typeof(EyeDataBuffer), typeof(PythonModelRunner))]
 public class ComfortBasedFoveation : MonoBehaviour
 {
-    [Header("Model & Data")]
-    public PythonModelRunner modelRunner;
-    public EyeDataBuffer eyeBuffer;
+    EyeDataBuffer eyeBuffer;
+    PythonModelRunner modelRunner;
 
-    [Header("XR & Foveation")]
-    public XRDisplaySubsystem xrDisplay;  // assign via inspector or auto-find
-    public float minFov = 0f, maxFov = 3f;
+    XRDisplaySubsystem xrDisplay;
+    InputDevice eyeDevice;
 
-    [Header("Depth of Field (optional)")]
-    public PostProcessVolume ppVolume;    // drag your volume here
-    public float minAperture = 1f, maxAperture = 16f;
-    DepthOfField dof;
+    public float minLevel = 0f;
+    public float maxLevel = 1f;
 
-    bool foveEnabled = false;
-    float lastComfort = 5f; // fallback comfort
+    bool requestInFlight = false;
 
     void Start()
     {
-        // 1) find XR display
+        eyeBuffer = GetComponent<EyeDataBuffer>();
+        modelRunner = GetComponent<PythonModelRunner>();
+
+        // Find XR display
         var displays = new List<XRDisplaySubsystem>();
         SubsystemManager.GetSubsystems(displays);
-        foreach (var d in displays)
+        if (displays.Count > 0)
         {
-            if (d.running)
-            {
-                xrDisplay = d;
-                foveEnabled = true;
-                Debug.Log("XR display found, foveation ON");
-                break;
-            }
+            xrDisplay = displays[0];
+            xrDisplay.foveatedRenderingFlags = XRDisplaySubsystem.FoveatedRenderingFlags.GazeAllowed;
         }
 
-        if (!foveEnabled)
-        {
-            Debug.Log("No XR headset—entering TEST mode");
-            foveEnabled = true;
-            xrDisplay = null;
-        }
+        // Find eye tracking device
+        var devices = new List<InputDevice>();
+        InputDevices.GetDevicesWithCharacteristics(
+            InputDeviceCharacteristics.EyeTracking | InputDeviceCharacteristics.HeadMounted,
+            devices);
 
+        if (devices.Count > 0)
+            eyeDevice = devices[0];
+        else
+            Debug.LogWarning("No eye-tracking device found.");
     }
 
     void Update()
     {
-        if (!foveEnabled) return;
+   
 
-        // 1) your test script is already filling the buffer
-
-        // 2) predict
-        float[,] win = eyeBuffer.GetWindow();
-        StartCoroutine(modelRunner.PredictWindow(win, comfort =>
+        // --- B) Predict if no request in flight
+        if (!requestInFlight && xrDisplay != null)
         {
-            lastComfort = comfort;
-        }));
+            requestInFlight = true;
+            float[,] window = eyeBuffer.GetWindow();
 
-        // 3) compute fovLevel
-        float t = Mathf.InverseLerp(1f, 10f, lastComfort);
-        float fovLevel = Mathf.Lerp(maxFov, minFov, t);
-
-        if (xrDisplay != null)
-        {
-            // real headset path
-            float current = xrDisplay.foveatedRenderingLevel;
-            xrDisplay.foveatedRenderingLevel = Mathf.Lerp(current, fovLevel, Time.deltaTime * 5f);
-            //xrDisplay.foveatedRenderingLevel = fovLevel;
-            xrDisplay.foveatedRenderingFlags = XRDisplaySubsystem.FoveatedRenderingFlags.GazeAllowed;
+            StartCoroutine(modelRunner.PredictWindow(window, comfort =>
+            {
+                float t = Mathf.InverseLerp(1f, 10f, comfort);
+                float fovLevel = Mathf.Lerp(maxLevel, minLevel, t);
+                xrDisplay.foveatedRenderingLevel = fovLevel;
+                requestInFlight = false;
+            }));
         }
-        else
-        {
-            // TEST mode: just log it
-            Debug.Log($"[TEST] comfort={lastComfort:F2}  →  fovLevel={fovLevel:F2}");
-        }
-
     }
 }
